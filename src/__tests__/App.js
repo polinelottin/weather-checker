@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import { shallow } from 'enzyme';
 
-describe('App Component', () => {
+describe('App', () => {
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -12,8 +12,11 @@ describe('App Component', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it('render container', () => {
-    const div = document.createElement('div');
-    expect(shallow(<App />).find('div').exists()).toBe(true)
-  });
+  it('renders header', () => {
+    expect(shallow(<App />).find('#header').length).toEqual(1)
+  })
+
+  it('renders from', () => {
+    expect(shallow(<App />).find('#form').length).toEqual(1)
+  })
 })
