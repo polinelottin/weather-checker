@@ -17,11 +17,11 @@ export default ({ weather }) =>
             </Fragment>
             :
             <Fragment>
-                <Typography id='welcomeTitle' variant="h6" style={styles.welcomeTitle}>
-                    Bem-vindo!
+                <Typography id='welcomeTitle' variant="h4" style={styles.welcomeTitle}>
+                    Welcome!
                 </Typography>
-                <Typography id='welcomeSubtitle' variant="caption" style={styles.welcomeSubtitle}>
-                    Aqui você descobre a temperatura atual de qualquer lugar
+                <Typography id='welcomeSubtitle' variant="h6" style={styles.welcomeSubtitle}>
+                    Check here how cold it is (or not) in any place
                 </Typography>
             </Fragment>
         }

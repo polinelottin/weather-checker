@@ -18,6 +18,6 @@ describe('Header Layout', () => {
 
   it('renders title', () => {
     const wrapper = shallow(<Header />);
-    expect(wrapper.find('#title').text()).toEqual('Is it cold there?');
+    expect(wrapper.find('#title').text()).toEqual('IS IT COLD THERE?');
   })
 })

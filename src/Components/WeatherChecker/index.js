@@ -6,26 +6,26 @@ import WeatherCard from '../Layouts/WeatherCard.js'
 
 import styles from './styles.js'
 
-
-const weather = {
-    "zipcode": "88880-000",
-    "temperature": 13.11,
-    "formatted_address": "Rua Alexandre Doneda, 215 - Centro, Lauro Muller - SC, 88880-000, Brazil",
-    "saved_at": "07/10/2019, 17:54:45",
-    "fetched_at": null
-}
 class WeatherChecker extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            formAddress: ''
+            formAddress: '',
+            weather: {}
           };
       }
     
     onSubmit = event => {
+        event.preventDefault();
+
         if(this.state.formAddress !== ''){
-            console.log('hey!');
+            fetch('http://127.0.0.1:5000/weather/'+this.state.formAddress)
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({weather: data.weather})
+            })
+            .catch(console.log) 
         }
     }
 
@@ -42,7 +42,7 @@ class WeatherChecker extends React.Component {
                     onSubmit={this.onSubmit.bind(this)}
                     handleChange={this.handleAddressChange.bind(this)}
                 />
-                <WeatherCard id='weatherCard' weather={weather} />
+                <WeatherCard id='weatherCard' weather={this.state.weather} />
             </Container>
         );
     }

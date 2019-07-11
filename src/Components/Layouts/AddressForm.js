@@ -18,14 +18,14 @@ export default ({ formAddress, onSubmit, handleChange }) =>
                     <TextField
                         required
                         id="formInput"
-                        label="Informe um endereço aqui"
+                        label="Type address here"
                         style={styles.addressInput}
                         value={formAddress}
                         onChange={handleChange}
                         onKeyPress={(ev) => {
                             if (ev.key === 'Enter' && formAddress) {
                                 ev.preventDefault();
-                                onSubmit();
+                                onSubmit(ev);
                             }
                         }}
                     />
@@ -41,7 +41,7 @@ export default ({ formAddress, onSubmit, handleChange }) =>
                             id="formButtonText"
                             variant="button"
                             style={styles.submitButtonText}>
-                            Buscar temperatura
+                            Is it cold?
                         </Typography>
                     </Button>
                 </Grid>

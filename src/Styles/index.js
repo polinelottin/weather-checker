@@ -42,7 +42,7 @@ const styles = {
         color: colors.darkGrey,
         margin: 16
     },
-    welcomeSubitle: {
+    welcomeSubtitle: {
         color: colors.lightGrey,
         margin: 16
     },

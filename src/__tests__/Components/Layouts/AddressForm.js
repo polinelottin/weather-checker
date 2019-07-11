@@ -14,7 +14,7 @@ describe('WeatherCard Layout', () => {
     it('renders input', () => {
         const wrapper = shallow(<AddressForm />);
         expect(wrapper.find('#formInput').length).toEqual(1);
-        expect(wrapper.find('#formInput').at(0).props().label).toEqual('Informe um endereço aqui');
+        expect(wrapper.find('#formInput').at(0).props().label).toEqual('Type address here');
     });
 
     describe('submit button', () => {
@@ -22,7 +22,7 @@ describe('WeatherCard Layout', () => {
             const wrapper = shallow(<AddressForm />);
             // expect(wrapper.find('#formButton').length).toEqual(1);
             expect(wrapper.find('#formButton')).toBeDefined();
-            expect(wrapper.find('#formButton').text()).toEqual('Buscar temperatura');
+            expect(wrapper.find('#formButton').text()).toEqual('Is it cold?');
         })
 
         it('disables button when there is no address', () => {
