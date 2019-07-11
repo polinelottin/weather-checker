@@ -2,7 +2,8 @@ import React from 'react';
 import App from '../App';
 import ReactDOM from 'react-dom';
 
-// describe what we are testing
+import { shallow } from 'enzyme';
+
 describe('App Component', () => {
 
   it('renders without crashing', () => {
@@ -10,5 +11,9 @@ describe('App Component', () => {
     ReactDOM.render(<App />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
-  
- })
+
+  it('render container', () => {
+    const div = document.createElement('div');
+    expect(shallow(<App />).find('p').exists()).toBe(true)
+  });
+})
