@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '../../../Components/Layouts/Header.js';
 import ReactDOM from 'react-dom';
-
 import { shallow } from 'enzyme';
+
+import Header from '../../../Components/Layouts/Header.js';
 
 describe('Header Layout', () => {
 

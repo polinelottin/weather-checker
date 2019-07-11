@@ -1,8 +1,8 @@
 import React from 'react';
-import WeatherCard from '../../../Components/Layouts/WeatherCard.js';
 import ReactDOM from 'react-dom';
-
 import { shallow } from 'enzyme';
+
+import WeatherCard from '../../../Components/Layouts/WeatherCard.js';
 
 const weather = {
     "zipcode": "88880-000",

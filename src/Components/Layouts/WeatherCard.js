@@ -4,7 +4,7 @@ import { Paper, Typography } from '@material-ui/core/';
 import styles from '../../Styles/'
 
 export default ({ weather }) =>
-    <Paper style={styles.weatherCardPaper}>
+    <Paper style={styles.card}>
         {(weather && weather.temperature)
             ?
             <Fragment>
@@ -21,7 +21,7 @@ export default ({ weather }) =>
                     Bem-vindo!
                 </Typography>
                 <Typography id='welcomeSubtitle' variant="caption" style={styles.welcomeSubtitle}>
-                    Aqui você descubre a temperatura atual de qualquer lugar
+                    Aqui você descobre a temperatura atual de qualquer lugar
                 </Typography>
             </Fragment>
         }
