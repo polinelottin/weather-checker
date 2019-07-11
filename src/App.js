@@ -1,13 +1,13 @@
 import React, {Fragment} from 'react';
 
-import WeatherForm from './Components/WeatherForm/';  
+import WeatherChecker from './Components/WeatherChecker/';  
 import Header from './Components/Layouts/Header.js'
 
 function App() {
   return (
     <Fragment>
       <Header id='header'/>
-      <WeatherForm id='form'/>
+      <WeatherChecker id='form'/>
     </Fragment>
   );
 }

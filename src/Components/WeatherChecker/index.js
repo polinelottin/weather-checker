@@ -3,6 +3,7 @@ import {Container} from '@material-ui/core'
 
 import AddressForm from '../Layouts/AddressForm.js'
 import WeatherCard from '../Layouts/WeatherCard.js'
+
 import styles from './styles.js'
 
 
@@ -13,7 +14,7 @@ const weather = {
     "saved_at": "07/10/2019, 17:54:45",
     "fetched_at": null
 }
-class WeatherForm extends React.Component {
+class WeatherChecker extends React.Component {
 
     constructor(props) {
         super(props);
@@ -47,4 +48,4 @@ class WeatherForm extends React.Component {
     }
 }
 
-export default WeatherForm;
+export default WeatherChecker;
