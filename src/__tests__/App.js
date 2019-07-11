@@ -1,5 +1,5 @@
 import React from 'react';
-import App from '../App';
+import App from '../App.js';
 import ReactDOM from 'react-dom';
 
 import { shallow } from 'enzyme';
@@ -14,6 +14,6 @@ describe('App Component', () => {
 
   it('render container', () => {
     const div = document.createElement('div');
-    expect(shallow(<App />).find('p').exists()).toBe(true)
+    expect(shallow(<App />).find('div').exists()).toBe(true)
   });
 })

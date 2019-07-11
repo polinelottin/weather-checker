@@ -1,8 +1,12 @@
 import React from 'react';
 
+import WeatherForm from './Components/WeatherForm/';  
+
 function App() {
   return (
-      <p>clean app</p>
+    <div >
+      <WeatherForm/>
+    </div>
   );
 }
 
