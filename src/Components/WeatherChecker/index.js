@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from '@material-ui/core'
+import { Container, Typography } from '@material-ui/core'
 
 import AddressForm from '../Layouts/AddressForm.js'
 import WeatherCard from '../Layouts/WeatherCard.js'
@@ -12,32 +12,71 @@ class WeatherChecker extends React.Component {
         super(props);
         this.state = {
             formAddress: '',
-            weather: {},
+            weather: null,
             searchHistory: [],
-            showHistory: false
+            showHistory: false,
+            isLoading: false,
+            error: null
         };
     }
 
     onSubmit = event => {
         event.preventDefault();
+        this.resetState();
+        this.fetchWeather();
+    }
 
+    resetState(){
+        this.setState({
+            weather: null,
+            showHistory: false,
+            isLoading: true,
+            error: null,
+        });
+    }
+
+    handleErrors(response) {
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+        return response.json();
+    }
+
+    fetchWeather() {
         if (this.state.formAddress !== '') {
+
             fetch('http://127.0.0.1:5000/weather/' + this.state.formAddress)
-                .then(res => res.json())
-                .then((data) => {
-                    this.setState({ weather: data.weather })
-                })
-                .catch(console.log)
+                .then(this.handleErrors)
+                .then(response => {
+                    this.setState({
+                        weather: response.weather,
+                        isLoading: false,
+                        error: null,
+                    })
+                }
+                )
+                .catch(error => this.setState({
+                    error: error,
+                    isLoading: false
+                }));
         }
     }
 
-    fetchHistory() {  
+    fetchHistory() {
         fetch('http://127.0.0.1:5000/weather_history')
-            .then(res => res.json())
-            .then((data) => {
-                this.setState({ searchHistory: data.search_history })
-            })
-            .catch(console.log)
+            .then(this.handleErrors)
+            .then(response => {
+                this.setState({
+                    searchHistory: response.search_history,
+                    isLoading: false,
+                    error: null,
+                })
+            }
+            )
+            .catch(error => this.setState({
+                error: error,
+                isLoading: false
+            }));
     }
 
     handleAddressChange = event => {
@@ -48,7 +87,7 @@ class WeatherChecker extends React.Component {
     handleHistory = event => {
         if (!this.state.showHistory) {
             this.fetchHistory();
-        } 
+        }
         this.toggleHistory();
 
     }
@@ -61,18 +100,35 @@ class WeatherChecker extends React.Component {
         ));
     }
 
+    renderErrorMessage() {
+        const { error } = this.state;
+
+        if (error) {
+            return (
+                <Typography id='errorMessage'>
+                    {error.message}
+                </Typography>
+            );
+        }
+        return null;
+    }
+
     render() {
+        const { weather, formAddress, showHistory, searchHistory, isLoading } = this.state;
+
         return (
             <Container style={styles.container} >
-                <WeatherCard id='weatherCard' weather={this.state.weather} />
+                {this.renderErrorMessage()}
+
+                <WeatherCard id='weatherCard' weather={weather} isLoading={isLoading} />
                 <AddressForm
                     id='addressForm'
-                    formAddress={this.state.formAddress}
                     onSubmit={this.onSubmit.bind(this)}
                     handleChange={this.handleAddressChange.bind(this)}
-                    showHistory={this.state.showHistory}
                     handleHistory={this.handleHistory.bind(this)}
-                    searchHistory={this.state.searchHistory}
+                    formAddress={formAddress}
+                    showHistory={showHistory}
+                    searchHistory={searchHistory}
                 />
             </Container>
         );

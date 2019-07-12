@@ -59,6 +59,10 @@ const styles = {
         color: colors.darkGrey,
         margin: 16
     },
+    loadingText:{
+        color: colors.lightGrey,
+        margin: 16
+    },
 
     //ADDRESS FORM
     formContainer: {

@@ -53,3 +53,17 @@ describe('WeatherCard Layout Filled', () => {
         expect(shallow(<WeatherCard weather={weather}/>).find('#temperature').length).toEqual(1)
     })
 })
+
+describe('Loading WeatherCard', () => {
+    it('renders only loading text', () => {
+        const wrapper = shallow(<WeatherCard isLoading={true}/>);
+
+        expect(wrapper.find('#fullAdress').length).toEqual(0);
+        expect(wrapper.find('#temperature').length).toEqual(0);
+        expect(wrapper.find('#welcomeTitle').length).toEqual(0)
+        expect(wrapper.find('#welcomeSubtitle').length).toEqual(0)
+
+        expect(wrapper.find('#loadingText').text()).toEqual('Loading...');
+
+    })
+})
