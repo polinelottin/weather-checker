@@ -14,18 +14,8 @@ export default ({ weather, isLoading }) =>
                 </Fragment>
             :
             <Fragment>
-                {(weather && weather.temperature)
+                {(weather == null)
                     ?
-                    <Fragment>
-                        <Typography id='fullAdress' variant="subtitle1" style={styles.fullAddressText}>
-                            {weather.formatted_address}
-                        </Typography>
-                        <Typography id='temperature' variant="h4" style={styles.temperatureText}>
-                            {weather.temperature + ' ºC'}
-                        </Typography>
-                    </Fragment>
-        
-                    :
                     <Fragment>
                         <Typography id='welcomeTitle' variant="h4" style={styles.title}>
                             Welcome!
@@ -34,6 +24,25 @@ export default ({ weather, isLoading }) =>
                             Check here how cold it is (or not)
                         </Typography>
                     </Fragment>
+                    :
+                    <Fragment>
+                        {weather.temperature
+                            ?
+                            <Fragment>
+                                <Typography id='fullAdress' variant="subtitle1" style={styles.fullAddressText}>
+                                    {weather.formatted_address}
+                                </Typography>
+                                <Typography id='temperature' variant="h4" style={styles.temperatureText}>
+                                    {weather.temperature + ' ºC'}
+                                </Typography>
+                            </Fragment>
+                            :
+                            <Typography id='temperature' variant="h6" style={styles.subtitle}>
+                                Ops! Nada foi encontrado. 
+                            </Typography>
+                        }
+                    </Fragment>
+                    
                 }
             </Fragment>
         }

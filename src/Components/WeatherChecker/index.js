@@ -35,26 +35,26 @@ class WeatherChecker extends React.Component {
         });
     }
 
-    handleErrors(response) {
-        if (!response.ok) {
-            throw Error(response.statusText);
-        }
-        return response.json();
-    }
-
     fetchWeather() {
         if (this.state.formAddress !== '') {
 
             fetch('http://127.0.0.1:5000/weather/' + this.state.formAddress)
-                .then(this.handleErrors)
                 .then(response => {
+                    if (!response.ok) {
+                        if(response.status === 404){
+                            return {weather: {}};
+                        }
+                        throw Error(response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
                     this.setState({
-                        weather: response.weather,
+                        weather: data.weather,
                         isLoading: false,
                         error: null,
                     })
-                }
-                )
+                })
                 .catch(error => this.setState({
                     error: error,
                     isLoading: false
@@ -64,15 +64,19 @@ class WeatherChecker extends React.Component {
 
     fetchHistory() {
         fetch('http://127.0.0.1:5000/weather_history')
-            .then(this.handleErrors)
+            .then(response => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
             .then(response => {
                 this.setState({
                     searchHistory: response.search_history,
                     isLoading: false,
                     error: null,
                 })
-            }
-            )
+            })
             .catch(error => this.setState({
                 error: error,
                 isLoading: false
