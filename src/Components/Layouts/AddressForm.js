@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import {
     Paper,
     Grid,
@@ -7,9 +7,12 @@ import {
     Button
 } from '@material-ui/core/';
 
+import History from  './History.js'
+
 import styles from '../../Styles'
 
-export default ({ formAddress, onSubmit, handleChange }) =>
+export default ({ formAddress, onSubmit, handleChange, showHistory, handleHistory, searchHistory }) =>
+
     <Paper style={styles.card}>
 
         <form onSubmit={onSubmit}>
@@ -41,11 +44,39 @@ export default ({ formAddress, onSubmit, handleChange }) =>
                             id="formButtonText"
                             variant="button"
                             style={styles.submitButtonText}>
-                            Is it cold?
+                             Check weather
                         </Typography>
                     </Button>
                 </Grid>
             </Grid>
         </form>
-    </Paper>
 
+        {
+            showHistory   
+            ?
+                <Fragment >
+                    <Button 
+                        id="hideHistoryButton" 
+                        onClick={handleHistory} 
+                        style={styles.historyButtom}
+                        display="flex"
+                        width="100%">
+                        <Typography variant="caption" style={styles.historyButtonText}>
+                            Hide
+                        </Typography>
+                    </Button>
+                    <History searchHistory={searchHistory}/>
+                </Fragment>
+            :
+            <Button 
+                id="showHistoryButton" 
+                onClick={handleHistory} 
+                style={styles.historyButtom}>
+                <Typography  variant="caption" style={styles.historyButtonText}>
+                    Click here to see what places people are also searching!
+                </Typography>
+            </Button>
+
+        }
+
+    </Paper>

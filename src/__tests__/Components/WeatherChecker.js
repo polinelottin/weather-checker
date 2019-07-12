@@ -20,6 +20,9 @@ describe('WeatherChecker Component', () => {
     it('has empty state when mount', () => {
       const wrapper = shallow(<WeatherChecker />);
       expect(wrapper.state('formAddress')).toEqual('');
+      expect(wrapper.state('weather')).toEqual({});
+      expect(wrapper.state('searchHistory')).toEqual([]);
+      expect(wrapper.state('showHistory')).toEqual(false);
     })
   })
 

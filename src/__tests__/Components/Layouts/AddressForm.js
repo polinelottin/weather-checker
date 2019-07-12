@@ -20,9 +20,8 @@ describe('WeatherCard Layout', () => {
     describe('submit button', () => {
         it('renders submit button', () => {
             const wrapper = shallow(<AddressForm />);
-            // expect(wrapper.find('#formButton').length).toEqual(1);
-            expect(wrapper.find('#formButton')).toBeDefined();
-            expect(wrapper.find('#formButton').text()).toEqual('Is it cold?');
+            expect(wrapper.find('#formButton').length).toEqual(1);
+            expect(wrapper.find('#formButton').text()).toEqual('Check weather');
         })
 
         it('disables button when there is no address', () => {
@@ -33,6 +32,20 @@ describe('WeatherCard Layout', () => {
         it('enables button when there is an address', () => {
             const wrapper = shallow(<AddressForm formAddress={'foo'}/>);
             expect(wrapper.find('#formButton').at(0).props().disabled).toBe(false);
+        })
+    });
+
+    describe('history link', () => {
+        it('renders submit button', () => {
+            const wrapper = shallow(<AddressForm showHistory={true}/>);
+            expect(wrapper.find('#hideHistoryButton').length).toEqual(1);
+            expect(wrapper.find('#showHistoryButton').length).toEqual(0);
+        })
+
+        it('does not render submit button', () => {
+            const wrapper = shallow(<AddressForm showHistory={false}/>);
+            expect(wrapper.find('#hideHistoryButton').length).toEqual(0);
+            expect(wrapper.find('#showHistoryButton').length).toEqual(1);
         })
     });
 });

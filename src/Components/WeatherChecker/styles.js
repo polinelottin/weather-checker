@@ -2,7 +2,8 @@ import defaultStyles from '../../Styles'
 
 const styles = {
     container: {
-        backgroundColor: defaultStyles.colors.lightBlue, 
+        flex: 1,
+        backgroundColor: defaultStyles.colors.darkBlue, 
         padding: 16, 
         margin: 0
     }

@@ -11,7 +11,7 @@ export default props =>
     <AppBar position="static" style={styles.appBar}>
         <Toolbar style={styles.toolBar}>
             <Typography id='title' variant="h4" style={styles.barTitle}>
-                IS IT COLD THERE?
+                HOW COLD IS IT THERE?
             </Typography>
         </Toolbar>
     </AppBar>
