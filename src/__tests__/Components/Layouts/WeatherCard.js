@@ -35,35 +35,81 @@ describe('WeatherCard Layout', () => {
 })
 
 describe('WeatherCard Layout Welcome', () => {
+    const wrapper = shallow(<WeatherCard />);
+
     it('renders title', () => {
-        expect(shallow(<WeatherCard />).find('#welcomeTitle').length).toEqual(1)
-    })
+        expect(wrapper.find('#welcomeTitle').length).toEqual(1);        
+    });
 
     it('renders subtitle', () => {
-        expect(shallow(<WeatherCard />).find('#welcomeSubtitle').length).toEqual(1)
-    })
+        expect(wrapper.find('#welcomeSubtitle').length).toEqual(1);
+    });
+
+    it('does not render weather info', () => {
+        expect(wrapper.find('#fullAdress').length).toEqual(0);
+        expect(wrapper.find('#temperature').length).toEqual(0);
+    });
+
+    it('does not render not found message', () =>{
+        expect(wrapper.find('#notFoundMessage').length).toEqual(0);
+    });
 })
 
 describe('WeatherCard Layout Filled', () => {
-    it('renders title', () => {
-        expect(shallow(<WeatherCard weather={weather}/>).find('#fullAdress').length).toEqual(1)
-    })
+    const wrapper = shallow(<WeatherCard weather={weather}/>);
 
-    it('renders subtitle', () => {
-        expect(shallow(<WeatherCard weather={weather}/>).find('#temperature').length).toEqual(1)
-    })
+    it('renders fullAdress', () => {
+        expect(wrapper.find('#fullAdress').length).toEqual(1);
+    });
+
+    it('renders temperature', () => {
+        expect(wrapper.find('#temperature').length).toEqual(1);
+    });
+
+    it('does not render welcome message', () => {
+        expect(wrapper.find('#welcomeTitle').length).toEqual(0);
+        expect(wrapper.find('#welcomeSubtitle').length).toEqual(0);
+    });
+
+    it('does not render not found message', () =>{
+        expect(wrapper.find('#notFoundMessage').length).toEqual(0);
+    });
+})
+
+describe('WeatherCard Layout Record Not Found', () => {
+    const wrapper = shallow(<WeatherCard weather={{}}/>);
+
+    it('renders not found message', () => {
+        expect(wrapper.find('#notFoundMessage').length).toEqual(1)
+    });
+
+    it('does not render welcome message', () => {
+        expect(wrapper.find('#welcomeTitle').length).toEqual(0);
+        expect(wrapper.find('#welcomeSubtitle').length).toEqual(0);
+    });
+
+    it('does not render weather info', () => {
+        expect(wrapper.find('#fullAdress').length).toEqual(0)
+        expect(wrapper.find('#temperature').length).toEqual(0)
+    });
+
 })
 
 describe('Loading WeatherCard', () => {
-    it('renders only loading text', () => {
-        const wrapper = shallow(<WeatherCard isLoading={true}/>);
-
-        expect(wrapper.find('#fullAdress').length).toEqual(0);
-        expect(wrapper.find('#temperature').length).toEqual(0);
-        expect(wrapper.find('#welcomeTitle').length).toEqual(0)
-        expect(wrapper.find('#welcomeSubtitle').length).toEqual(0)
-
+    const wrapper = shallow(<WeatherCard isLoading={true}/>);
+    
+    it('renders loading text', () => {
         expect(wrapper.find('#loadingText').text()).toEqual('Loading...');
 
-    })
+    });
+
+    it('does not render welcome message', () => {
+        expect(wrapper.find('#welcomeTitle').length).toEqual(0);
+        expect(wrapper.find('#welcomeSubtitle').length).toEqual(0);
+    });
+
+    it('does not render weather info', () => {
+        expect(wrapper.find('#fullAdress').length).toEqual(0);
+        expect(wrapper.find('#temperature').length).toEqual(0);
+    });
 })

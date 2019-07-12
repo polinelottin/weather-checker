@@ -37,7 +37,7 @@ export default ({ weather, isLoading }) =>
                                 </Typography>
                             </Fragment>
                             :
-                            <Typography id='temperature' variant="h6" style={styles.subtitle}>
+                            <Typography id='notFoundMessage' variant="h6" style={styles.subtitle}>
                                 Ops! Nada foi encontrado. 
                             </Typography>
                         }

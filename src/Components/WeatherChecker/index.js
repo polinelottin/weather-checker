@@ -106,15 +106,7 @@ class WeatherChecker extends React.Component {
 
     renderErrorMessage() {
         const { error } = this.state;
-
-        if (error) {
-            return (
-                <Typography id='errorMessage'>
-                    {error.message}
-                </Typography>
-            );
-        }
-        return null;
+        return error ? (<Typography id='errorMessage'>{error.message}</Typography>) : null;
     }
 
     render() {
