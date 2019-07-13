@@ -4,12 +4,13 @@ import {
     Box,
     List,
     ListItem,
-    Paper
+    Paper,
+    Button
 } from '@material-ui/core/';
 
 import styles from '../../Styles'
 
-export default ({ searchHistory }) =>
+export default ({ searchHistory, handleHistory }) =>
     <Box style={styles.historyBox}>
         <Typography id='historyTitle' variant="h5" style={styles.historyTitle}>
             What people search
@@ -41,10 +42,19 @@ export default ({ searchHistory }) =>
                 :
 
                 <Typography id='noHistoryText' variant="caption" style={styles.historyCaption}>
-                    Be the first
+                    Be the first one to search a place!
                 </Typography>
         }
-
+        <Fragment >
+            <Button 
+                id="hideHistoryButton" 
+                onClick={handleHistory} 
+                style={styles.historyButtom}>
+                <Typography variant="caption" style={styles.historyButtonText}>
+                    Hide
+                </Typography>
+            </Button>
+        </Fragment>
     </Box>
 
 

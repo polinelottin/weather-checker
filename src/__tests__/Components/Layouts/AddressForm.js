@@ -36,16 +36,14 @@ describe('WeatherCard Layout', () => {
     });
 
     describe('history link', () => {
-        it('renders submit button', () => {
-            const wrapper = shallow(<AddressForm showHistory={true}/>);
-            expect(wrapper.find('#hideHistoryButton').length).toEqual(1);
-            expect(wrapper.find('#showHistoryButton').length).toEqual(0);
+        it('renders history button', () => {
+            const wrapper = shallow(<AddressForm showHistory={false}/>);
+            expect(wrapper.find('#showHistoryButton').length).toEqual(1);
         })
 
-        it('does not render submit button', () => {
-            const wrapper = shallow(<AddressForm showHistory={false}/>);
-            expect(wrapper.find('#hideHistoryButton').length).toEqual(0);
-            expect(wrapper.find('#showHistoryButton').length).toEqual(1);
+        it('does not render history button', () => {
+            const wrapper = shallow(<AddressForm showHistory={true}/>);
+            expect(wrapper.find('#showHistoryButton').length).toEqual(0);
         })
     });
 });

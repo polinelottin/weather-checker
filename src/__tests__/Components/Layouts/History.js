@@ -48,13 +48,18 @@ describe('History Layout', () => {
         expect(wrapper.find('#historyTitle').text()).toEqual('What people search');
     })
 
+    it('renders hide button', () => {
+        const wrapper = shallow(<History />);
+        expect(wrapper.find('#hideHistoryButton').length).toEqual(1);
+    })
+
 })
 
 describe('History list', () => {
     it('does not crash with empty list', () => {
         const wrapper = shallow(<History searchHistory={{}}/>);
         expect(wrapper.find('#noHistoryText').length).toEqual(1);
-        expect(wrapper.find('#noHistoryText').text()).toEqual('Be the first');
+        expect(wrapper.find('#noHistoryText').text()).toEqual('Be the first one to search a place!');
         expect(wrapper.find('#historyItem').length).toEqual(0);
     })
 

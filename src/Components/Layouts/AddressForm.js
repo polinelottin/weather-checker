@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
     Paper,
     Grid,
@@ -54,19 +54,7 @@ export default ({ formAddress, onSubmit, handleChange, showHistory, handleHistor
         {
             showHistory   
             ?
-                <Fragment >
-                    <Button 
-                        id="hideHistoryButton" 
-                        onClick={handleHistory} 
-                        style={styles.historyButtom}
-                        display="flex"
-                        width="100%">
-                        <Typography variant="caption" style={styles.historyButtonText}>
-                            Hide
-                        </Typography>
-                    </Button>
-                    <History searchHistory={searchHistory}/>
-                </Fragment>
+                <History searchHistory={searchHistory} handleHistory={handleHistory} />
             :
             <Button 
                 id="showHistoryButton" 
