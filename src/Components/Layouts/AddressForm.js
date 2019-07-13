@@ -11,7 +11,7 @@ import History from  './History.js'
 
 import styles from '../../Styles'
 
-export default ({ formAddress, onSubmit, handleChange, showHistory, handleHistory, searchHistory }) =>
+export default ({ formAddress, onSubmit, handleChange, showHistory, handleHistory, searchHistory, onWeatherClick }) =>
 
     <Paper style={styles.card}>
 
@@ -54,7 +54,11 @@ export default ({ formAddress, onSubmit, handleChange, showHistory, handleHistor
         {
             showHistory   
             ?
-                <History searchHistory={searchHistory} handleHistory={handleHistory} />
+                <History 
+                    searchHistory={searchHistory} 
+                    handleHistory={handleHistory} 
+                    onWeatherClick={onWeatherClick}
+                />
             :
             <Button 
                 id="showHistoryButton" 

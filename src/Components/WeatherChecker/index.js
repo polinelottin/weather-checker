@@ -93,7 +93,14 @@ class WeatherChecker extends React.Component {
             this.fetchHistory();
         }
         this.toggleHistory();
+    }
 
+    onWeatherClick = (event, weather) => {
+        this.toggleHistory();
+
+        this.setState({ weather: weather });
+        // console.log('opa!');
+        // console.log(weather);
     }
 
     toggleHistory() {
@@ -122,6 +129,7 @@ class WeatherChecker extends React.Component {
                     onSubmit={this.onSubmit.bind(this)}
                     handleChange={this.handleAddressChange.bind(this)}
                     handleHistory={this.handleHistory.bind(this)}
+                    onWeatherClick={this.onWeatherClick.bind(this)}
                     formAddress={formAddress}
                     showHistory={showHistory}
                     searchHistory={searchHistory}

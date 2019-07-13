@@ -10,7 +10,7 @@ import {
 
 import styles from '../../Styles'
 
-export default ({ searchHistory, handleHistory }) =>
+export default ({ searchHistory, handleHistory, onWeatherClick }) =>
     <Box style={styles.historyBox}>
         <Typography id='historyTitle' variant="h5" style={styles.historyTitle}>
             What people search
@@ -26,11 +26,11 @@ export default ({ searchHistory, handleHistory }) =>
 
                     <List component="nav" aria-label="Secondary mailbox folders">
                         {
-                            searchHistory.map((h, i) =>
-                                <ListItem button key={i} id="historyItem">
+                            searchHistory.map((w, i) =>
+                                <ListItem button key={i} id="historyItem" onClick={(e) => {onWeatherClick(e, w)}}>
                                     <Paper style={styles.historyItemPaper}>
                                         <Typography variant="caption" style={{ color: styles.colors.darkGrey }}>
-                                            {h.formatted_address}
+                                            {w.formatted_address}
                                         </Typography>
                                     </Paper>
                                 </ListItem>
