@@ -90,8 +90,6 @@ const styles = {
 
     //HISTORY
     historyBox: { 
-        flex: 1, 
-        flexDirection: 'column', 
         backgroundColor: colors.beige,
         padding: 16,
         borderRadius: '1%'

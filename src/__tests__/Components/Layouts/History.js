@@ -77,7 +77,10 @@ describe('History list', () => {
 
     it('weather card correctly', () => {
         const wrapper = shallow(<History searchHistory={history}/>);
-        expect(wrapper.find('#historyItem').at(0).text()).toEqual(history[0]['formatted_address']);
+
+        const searchedText = "Searched at: " + history[0]['saved_at']; 
+        expect(wrapper.find('#historyAddress').at(0).text()).toEqual(history[0]['formatted_address']);
+        expect(wrapper.find('#searchedAtText').at(0).text()).toEqual(searchedText);
         
     })
 })

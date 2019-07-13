@@ -28,10 +28,15 @@ export default ({ searchHistory, handleHistory, onWeatherClick }) =>
                         {
                             searchHistory.map((w, i) =>
                                 <ListItem button key={i} id="historyItem" onClick={(e) => {onWeatherClick(e, w)}}>
-                                    <Paper style={styles.historyItemPaper}>
-                                        <Typography variant="caption" style={{ color: styles.colors.darkGrey }}>
-                                            {w.formatted_address}
-                                        </Typography>
+                                    <Paper style={styles.historyItemPaper} >
+                                        <Box display="flex" flexDirection="column">
+                                            <Typography id='historyAddress' variant="caption" style={{ color: styles.colors.darkGrey }}>
+                                                {w.formatted_address}
+                                            </Typography>
+                                            <Typography id='searchedAtText' variant="caption" style={{ color: styles.colors.lightGrey }}>
+                                                {"Searched at: " + w.saved_at}
+                                            </Typography>
+                                        </Box>
                                     </Paper>
                                 </ListItem>
                             )
