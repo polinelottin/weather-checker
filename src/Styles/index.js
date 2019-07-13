@@ -84,6 +84,7 @@ const styles = {
 
     },
     historyButtonText: {
+        marginLeft: 16,
         color: colors.lightGrey,
     },
 
@@ -97,8 +98,7 @@ const styles = {
     },
     historyTitle: {
         color: colors.darkBlue, 
-        marginLeft: 
-        16, 
+        marginLeft: 16, 
         marginTop: 16
     },
     historyCaption: { 

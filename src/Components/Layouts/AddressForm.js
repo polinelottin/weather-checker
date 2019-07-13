@@ -17,7 +17,7 @@ export default ({ formAddress, onSubmit, handleChange, showHistory, handleHistor
 
         <form onSubmit={onSubmit}>
             <Grid container style={styles.formContainer}>
-                <Grid item>
+                <Grid item style={{width: '50%'}}>
                     <TextField
                         required
                         id="formInput"
