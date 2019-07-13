@@ -1,14 +1,13 @@
 const colors = {
-    darkBrown: '#231F20',
-
-    darkBlue: '#6EA8D1',
-    lightBlue: '#D1F5FF',
-
+    black: '#231F20',
+    white: '#F6F9FA',
     darkGrey: '#393E41',
     lightGrey: '#6D7171',
-    white: '#F6F9FA',
+    
+    darkBlue: '#6EA8D1',
+    lightBlue: '#D1F5FF',
     beige: '#EFE6DD',
-    green: '#7ACB67'
+    green: '#7ACB67',
 
 }
 
@@ -16,16 +15,14 @@ const styles = {
     colors: colors,
 
     card: {
-        marginRight: 16,
-        marginTop: 16,
-        marginBottom: 16,
+        margin: 16,
         padding: 8,
         backgroundColor: colors.white
     },
 
     title: {
         color: colors.darkBlue,
-        ontWeight: 600,
+        ontWeight: 900,
         margin: 16
     },
 
@@ -38,7 +35,7 @@ const styles = {
     appBar: {
         padding: 0,
         margin: 0,
-        backgroundColor: colors.darkBrown,
+        backgroundColor: colors.black,
     },
     toolBar: {
         padding: 16,
@@ -66,31 +63,27 @@ const styles = {
 
     //ADDRESS FORM
     formContainer: {
-        marginLeft: 16,
-        margin: 16
+        margin: 16,
     },
     addressInput: {
         marginLeft: 8,
-        marginRight: 8, 
-        // width: 300, 
+        marginRight: 8,  
         fontColor: colors.lightGrey
     },
     submitButton: { 
         marginTop: 8, 
+        marginLeft: 16, 
         backgroundColor: colors.green 
     },
     submitButtonText: {
         color: colors.white 
     },
     historyButton: {
-        marginLeft: 16, 
+        margin: 16, 
         fontSize: 12, 
-        flex: 1,
-        width: '100%'
+
     },
     historyButtonText: {
-        marginLeft: 16, 
-        marginTop: 16,
         color: colors.lightGrey,
     },
 

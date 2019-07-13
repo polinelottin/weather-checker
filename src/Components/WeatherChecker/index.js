@@ -21,7 +21,6 @@ class WeatherChecker extends React.Component {
     }
 
     onSubmit = event => {
-        event.preventDefault();
         this.resetState();
         this.fetchWeather();
     }
@@ -97,10 +96,7 @@ class WeatherChecker extends React.Component {
 
     onWeatherClick = (event, weather) => {
         this.toggleHistory();
-
         this.setState({ weather: weather });
-        // console.log('opa!');
-        // console.log(weather);
     }
 
     toggleHistory() {

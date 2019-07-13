@@ -22,6 +22,8 @@ export default ({ formAddress, onSubmit, handleChange, showHistory, handleHistor
                         required
                         id="formInput"
                         label="Type address here"
+                        autoFocus={true}
+                        fullWidth={true}
                         style={styles.addressInput}
                         value={formAddress}
                         onChange={handleChange}
